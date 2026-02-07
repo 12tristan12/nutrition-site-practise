@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Nisujahu, SUNNUNTAI, 2 kg",
+    "caloriesPer100g": 0.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 0.0,
+    "sugarPer100g": 0.0,
+    "allergies": []
+  },
+  {
+    "id": 2,
+    "name": "Kohviuba Qualita Oro, LAVAZZA, 1 kg",
+    "caloriesPer100g": 0.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 0.0,
+    "sugarPer100g": 0.0,
+    "allergies": []
+  },
+  {
+    "id": 3,
+    "name": "Risotoriis Arborio, RISO SCOTTI, 500 g",
+    "caloriesPer100g": 351.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 1.3,
+    "carbsPer100g": 77.0,
+    "sugarPer100g": 0.3,
+    "allergies": []
+  },
+  {
+    "id": 4,
+    "name": "Gluteenivaba maisijahust penne rigate, SAM MILLS, 500 g",
+    "caloriesPer100g": 345.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.8,
+    "carbsPer100g": 79.0,
+    "sugarPer100g": 1.0,
+    "allergies": []
+  },
+  {
+    "id": 5,
+    "name": "Mustikamoos, PÕLTSAMAA, 380 g",
+    "caloriesPer100g": 210.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.5,
+    "carbsPer100g": 50.0,
+    "sugarPer100g": 49.0,
+    "allergies": []
+  },
+  {
+    "id": 6,
+    "name": "Lastemakaronid põrsas Peppa, MELISSA, 500 g",
+    "caloriesPer100g": 354.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 1.5,
+    "carbsPer100g": 72.1,
+    "sugarPer100g": 3.8,
+    "allergies": []
+  },
+  {
+    "id": 7,
+    "name": "Gluteenivaba maisijahust fusilli, SAM MILLS, 500 g",
+    "caloriesPer100g": 345.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.8,
+    "carbsPer100g": 79.0,
+    "sugarPer100g": 1.0,
+    "allergies": []
+  },
+  {
+    "id": 8,
+    "name": "Muhe Mesi, MUHE MESI, 450 g",
+    "caloriesPer100g": 330.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 80.8,
+    "sugarPer100g": 0.0,
+    "allergies": []
+  },
+  {
+    "id": 9,
+    "name": "Hirss 4x100g, BALTIX, 4*100g",
+    "caloriesPer100g": 300.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 3.0,
+    "carbsPer100g": 69.0,
+    "sugarPer100g": 0.3,
+    "allergies": []
+  },
+  {
+    "id": 10,
+    "name": "Macaroni, PANZANI, 500 g",
+    "caloriesPer100g": 365.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 2.0,
+    "carbsPer100g": 92.0,
+    "sugarPer100g": 3.7,
+    "allergies": []
+  },
+  {
+    "id": 11,
+    "name": "Ülipeen nisujahu T00, REGGIA, 1 kg",
+    "caloriesPer100g": 358.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 1.3,
+    "carbsPer100g": 73.0,
+    "sugarPer100g": 3.0,
+    "allergies": []
+  },
+  {
+    "id": 12,
+    "name": "Marineeritud kurk, SALVEST, 530 g",
+    "caloriesPer100g": 11.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 2.1,
+    "sugarPer100g": 2.0,
+    "allergies": []
+  },
+  {
+    "id": 13,
+    "name": "Spagett Spaghetti, PANZANI, 1 kg",
+    "caloriesPer100g": 361.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 2.0,
+    "carbsPer100g": 72.0,
+    "sugarPer100g": 3.7,
+    "allergies": []
+  },
+  {
+    "id": 14,
+    "name": "Vaarikamoos, PÕLTSAMAA, 380 g",
+    "caloriesPer100g": 203.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.6,
+    "carbsPer100g": 47.0,
+    "sugarPer100g": 45.0,
+    "allergies": []
+  },
+  {
+    "id": 15,
+    "name": "Hirsihelbed, BALTIX, 500 g",
+    "caloriesPer100g": 371.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 2.7,
+    "carbsPer100g": 73.6,
+    "sugarPer100g": 0.0,
+    "allergies": []
+  },
+  {
+    "id": 16,
+    "name": "Kohvipadjad keskmine röst 36tk, MERRILD, 250 g",
+    "caloriesPer100g": 0.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 0.0,
+    "sugarPer100g": 0.0,
+    "allergies": []
+  },
+  {
+    "id": 17,
+    "name": "Metsamarjamoos, KÜLLUS, 400 g",
+    "caloriesPer100g": 164.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 40.0,
+    "sugarPer100g": 36.0,
+    "allergies": []
+  },
+  {
+    "id": 18,
+    "name": "Kohviuba Wahur, TASUJA, 1 kg",
+    "caloriesPer100g": 2.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 0.0,
+    "sugarPer100g": 0.0,
+    "allergies": []
+  },
+  {
+    "id": 19,
+    "name": "Kohviuba Tambet, TASUJA, 1 kg",
+    "caloriesPer100g": 2.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.0,
+    "carbsPer100g": 0.0,
+    "sugarPer100g": 0.0,
+    "allergies": []
+  },
+  {
+    "id": 20,
+    "name": "Maasikamoos, PÕLTSAMAA, 380 g",
+    "caloriesPer100g": 195.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.5,
+    "carbsPer100g": 47.0,
+    "sugarPer100g": 46.0,
+    "allergies": []
+  },
+  {
+    "id": 21,
+    "name": "Pasta Carbonara juustu-koore kastmes, KNORR, 55 g",
+    "caloriesPer100g": 49.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 4.1,
+    "carbsPer100g": 12.1,
+    "sugarPer100g": 1.0,
+    "allergies": []
+  },
+  {
+    "id": 22,
+    "name": "Aprikoosimoos, PÕLTSAMAA, 380 g",
+    "caloriesPer100g": 210.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.5,
+    "carbsPer100g": 49.0,
+    "sugarPer100g": 44.0,
+    "allergies": []
+  },
+  {
+    "id": 23,
+    "name": "Mustsõstramoos, PÕLTSAMAA, 380 g",
+    "caloriesPer100g": 210.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 0.5,
+    "carbsPer100g": 49.0,
+    "sugarPer100g": 48.0,
+    "allergies": []
+  },
+  {
+    "id": 24,
+    "name": "\"Nutri Mio\" gluteenivaba pasta FUSILLI, REGGIA, 400 g",
+    "caloriesPer100g": 356.0,
+    "proteinPer100g": 0.0,
+    "fatPer100g": 1.5,
+    "carbsPer100g": 78.6,
+    "sugarPer100g": 0.55,
+    "allergies": []
+  }
+]
