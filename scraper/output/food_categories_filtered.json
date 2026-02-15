@@ -1,0 +1,406 @@
+{
+  "generated_at": "2026-02-04T18:11:41.874935",
+  "category_count": 133,
+  "description": "Food-related leaf categories only (deepest subcategories to avoid duplicate scraping)",
+  "categories": [
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/jahud"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/makaronid"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/tangained"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/riisid"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/gurmee-kuivained"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/hommikuhelbed-muslid-kiirpudrud"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/kuivsupid-ja-kastmed"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kuivained-hommikusoogid/paja-ja-nuudliroad"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/hoidised/magusad-hoidised"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/hoidised/hoidised"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/hoidised/valmistoidud-purgis"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/hoidised/gurmee-hoidised"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kohv-tee-kakao/kohvid"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kohv-tee-kakao/teed"
+    },
+    {
+      "url": "https://www.selver.ee/kuivained-hoidised/kohv-tee-kakao/kakaod-kakaojoogid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/lahja-alkohol/olled-siidrid-segud-kokteilid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/lahja-alkohol/punased-veinid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/lahja-alkohol/valged-veinid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/lahja-alkohol/roosad-veinid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/lahja-alkohol/likoorveinid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/lahja-alkohol/shampanjad-vahuveinid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/lahja-alkohol/sommeljee-soovitab"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/viinad"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/dzinnid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/viskid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/konjakid-brandid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/rummid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/aperitiiviid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/likoorid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kange-alkohol/muud-kanged-alkohoolsed-joogid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/veed-mahlad-siirupid-smuutid/smuutid-varsked-mahlad"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/veed-mahlad-siirupid-smuutid/veed"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/veed-mahlad-siirupid-smuutid/mahlad-ja-kontsentraadid-siirupid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/karastus-ja-energiajoogid-toonikud/karastusjoogid-toonikud"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/karastus-ja-energiajoogid-toonikud/energiajoogid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/karastus-ja-energiajoogid-toonikud/alkoholivabad-joogid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/spordijoogid-pulbrid-batoonid/spordijoogid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/spordijoogid-pulbrid-batoonid/toidulisandid"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/valgumihklid-ja-tikud/valgumihklid-ja-tikud"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/ounad-pirnid"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/troopilised-eksootilised-viljad"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/koogiviljad-juurviljad"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/seened"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/maitsetaimed-varsked-saltid-piprad"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/puuviljasalatid"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/marjad"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/sealiha"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/linnuliha"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/veise-lamba-ja-ulukiliha"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/hakkliha"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/keedu-ja-suitsuvorstid-viinerid"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/singid-rulaadid"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/muud-lihatooted"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/grillvorstid-verivorstid"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/gurmee-lihatooted"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/varske-kala-mereannid"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/soolatud-ja-suitsutatud-kalatooted"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/toodeldud-mereannid"
+    },
+    {
+      "url": "https://www.selver.ee/liha-ja-kalatooted/muud-kalatooted"
+    },
+    {
+      "url": "https://www.selver.ee/piimatooted-munad-void/piimad-koored"
+    },
+    {
+      "url": "https://www.selver.ee/piimatooted-munad-void/kohupiimad-kodujuustud"
+    },
+    {
+      "url": "https://www.selver.ee/piimatooted-munad-void/jogurtid-jogurtijoogid"
+    },
+    {
+      "url": "https://www.selver.ee/piimatooted-munad-void/kohukesed"
+    },
+    {
+      "url": "https://www.selver.ee/piimatooted-munad-void/muud-magustoidud"
+    },
+    {
+      "url": "https://www.selver.ee/piimatooted-munad-void/munad"
+    },
+    {
+      "url": "https://www.selver.ee/piimatooted-munad-void/void-margariinid"
+    },
+    {
+      "url": "https://www.selver.ee/juustud/juustud"
+    },
+    {
+      "url": "https://www.selver.ee/juustud/maardejuustud"
+    },
+    {
+      "url": "https://www.selver.ee/juustud/delikatessjuustud"
+    },
+    {
+      "url": "https://www.selver.ee/juustud/gurmee-juustud"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/leivad"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/saiad"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/sepikud-kuklid-lavassid"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/nakileivad"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/selveri-pagarid"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/tordid"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/koogid-rullbiskviidid"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/saiakesed-stritslid-kringlid"
+    },
+    {
+      "url": "https://www.selver.ee/valmistoidud/salatid"
+    },
+    {
+      "url": "https://www.selver.ee/valmistoidud/jahutatud-valmistoidud"
+    },
+    {
+      "url": "https://www.selver.ee/valmistoidud/magustoidud"
+    },
+    {
+      "url": "https://www.selver.ee/valmistoidud/sushi"
+    },
+    {
+      "url": "https://www.selver.ee/maitseained-ja-puljongid/maitseained"
+    },
+    {
+      "url": "https://www.selver.ee/maitseained-ja-puljongid/maailma-kook"
+    },
+    {
+      "url": "https://www.selver.ee/maitseained-ja-puljongid/puljongid"
+    },
+    {
+      "url": "https://www.selver.ee/kastmed-olid/olid-aadikad"
+    },
+    {
+      "url": "https://www.selver.ee/kastmed-olid/majoneesid-sinepid"
+    },
+    {
+      "url": "https://www.selver.ee/kastmed-olid/ketsupid-tomatipastad-kastmed"
+    },
+    {
+      "url": "https://www.selver.ee/kastmed-olid/gurmee-kastmed"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/kommipakid"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/natsud-pastillid"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/muud-maiustused"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/kupsised"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/nakileivad"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/pahklid-ja-kuivatatud-puuviljad"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/sipsid"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/gurmee-maiustused-kupsised-ja-naksid"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/tahtpaeva-maiustused"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/tahtpaeva-kupsised-naksid"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/kommikarbid"
+    },
+    {
+      "url": "https://www.selver.ee/maiustused-kupsised-naksid/sokolaadid"
+    },
+    {
+      "url": "https://www.selver.ee/kulmutatud-toidukaubad/kulmutatud-liha-ja-kalatooted"
+    },
+    {
+      "url": "https://www.selver.ee/kulmutatud-toidukaubad/kulmutatud-valmistooted"
+    },
+    {
+      "url": "https://www.selver.ee/kulmutatud-toidukaubad/kulmutatud-koogiviljad-marjad-puuviljad"
+    },
+    {
+      "url": "https://www.selver.ee/kulmutatud-toidukaubad/kulmutatud-taignad-ja-kondiitritooted"
+    },
+    {
+      "url": "https://www.selver.ee/kulmutatud-toidukaubad/jaatised"
+    },
+    {
+      "url": "https://www.selver.ee/selveri-pagarid/pirukad-saiakesed"
+    },
+    {
+      "url": "https://www.selver.ee/selveri-pagarid/patsilised"
+    },
+    {
+      "url": "https://www.selver.ee/selveri-pagarid/stritslid"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/lihatooted"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/juustud"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/hoidised"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/kuivained"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/joogid"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/maiustused-naksid"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/maitseained-maailma-kook"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/aksessuaarid"
+    },
+    {
+      "url": "https://www.selver.ee/selver-gurmee/kinkekorvid"
+    },
+    {
+      "url": "https://www.selver.ee/puu-ja-koogiviljad/smuutid-varsked-mahlad"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kohv-tee-kakao/kohv"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kohv-tee-kakao/teed"
+    },
+    {
+      "url": "https://www.selver.ee/joogid/kohv-tee-kakao/kakaod-kakaojoogid"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/suupisted"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/eelroad"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/pohiroad"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/valikud"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/kondiitritooted"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/pagaritooted"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/kuidas-tellida"
+    },
+    {
+      "url": "https://www.selver.ee/peolauatooted/naidismenuud"
+    },
+    {
+      "url": "https://www.selver.ee/valmistoidud/suupisted"
+    },
+    {
+      "url": "https://www.selver.ee/kupsised"
+    },
+    {
+      "url": "https://www.selver.ee/leivad-saiad-kondiitritooted/pitsanadal"
+    }
+  ]
+}
