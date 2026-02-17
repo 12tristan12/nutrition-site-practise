@@ -1,4 +1,4 @@
-import type { Product } from "../types/Product";
+import type { Product } from "../types/Food";
 
 interface Props {
     product: Product;
@@ -6,20 +6,16 @@ interface Props {
 
 export function ProductItem ({ product }: Props) {
     return (
-        <li>
-            <strong>{product.name}</strong>
-            <br />
-            <span>{product.caloriesPer100g} kcal / 100g</span>
-            <br />
-            <span>Protein: {product.proteinPer100g} g</span>
-            <br />
-            <span>Fat: {product.fatPer100g} g</span>
-            <br />
-            <span>Carbs: {product.carbsPer100g} g</span>
-            <br />
-            <span>Sugar: {product.sugarPer100g} g</span>
-            <br />
-            <span>{product.allergies}</span>
-        </li>
+        <div className="product-container">
+        <h3>{product.name}</h3>   
+        <div className = "product-nutrition">
+            <div>Calories: {product.caloriesPer100g} kcal </div>
+            <div>Protein: {product.proteinPer100g} g</div>
+            <div>Fat: {product.fatPer100g} g</div>
+            <div>Carbs: {product.carbsPer100g} g</div>
+            <div>Sugar: {product.sugarPer100g} g</div>
+            <div>{product.allergies}</div>
+        </div>
+        </div>
     );
 }
