@@ -18,15 +18,16 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
   };
 
   return (
-    <div>
+    <div className="search-bar.container">
       <input
         type="text"
         value={query}
+        className="search-bar"
         onChange={handleChange}
         placeholder="Search foods..."
       />
       {query && (
-        <button onClick={handleClear}>Clear</button>
+          <button className="clear-button visible" onClick={handleClear}>Clear</button>
       )}
     </div>
   );

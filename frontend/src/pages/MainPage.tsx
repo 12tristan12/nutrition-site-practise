@@ -46,7 +46,7 @@ function MainPage(){
         fetchData();
     },
     [currentPage, searchQuery]);
-    
+
     const handleSearch = (query: string) => {
       setSearchQuery(query);
       setCurrentPage(0); 
@@ -65,10 +65,12 @@ function MainPage(){
     };
 
     return (
-    <div>
+    <div className="main-page-container">
       <header>
-        <h1>Nutrition Tracker</h1>
-        <SearchBar onSearch={handleSearch} />
+        <div className = "main-page-header">
+          <h1>Nutrition Tracker</h1>
+        </div>
+          <SearchBar onSearch={handleSearch} />
       </header>
 
       <main>
