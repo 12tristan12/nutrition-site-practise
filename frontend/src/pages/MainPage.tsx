@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllFoods, searchFoods } from "../api/foodService";
 import { SearchBar }  from "../components/SearchBar";
 import type { Product } from "../types/Food";
-import { ProductItem } from "../components/ProductItem";
+import  ProductItem from "../components/ProductItem";
+import NutritionBars from "../components/NutritionBars";
 
 
 function MainPage(){
@@ -14,6 +15,7 @@ function MainPage(){
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [consumedFoods, setConsumedFoods] = useState<{food: Product, servings: number}[]>([]);
 
     useEffect (() => {
         const fetchData = async () =>{ 
@@ -64,46 +66,55 @@ function MainPage(){
         }
     };
 
+    const handleAddFood = (food: Product, servings: number) => {
+      setConsumedFoods(prev =>  [...prev, { food, servings}]);
+    }
+
     return (
-    <div className="main-page-container">
-      <header>
-        <div className = "main-page-header">
-          <h1>Nutrition Tracker</h1>
-        </div>
-          <SearchBar onSearch={handleSearch} />
-      </header>
-
-      <main>
-        <p>Showing {foods.length} of {totalElements} foods</p>
-
-        {loading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
-
-        {!loading && !error && (
-          <div className="food-grid">
-            {foods.length === 0 ? (
-              <p>No foods found</p>
-            ) : (
-              foods.map((food) => (
-                <ProductItem key={food.id} product={food} />
-              ))
-            )}
+    <div className="main-page-wrapper">
+      <div className="left-side">
+        <header>
+          <div className = "main-page-header">
+            <h1>Nutrition Tracker</h1>
           </div>
-        )}
+            <SearchBar onSearch={handleSearch} />
+        </header>
 
-        {/* Pagination */}
-        <div className="pagination">
-          <button onClick={handlePrevPage} disabled={currentPage === 0}>
-            Previous
-          </button>
+        <main>
+          <p>Showing {foods.length} of {totalElements} foods</p>
 
-          <span>Page {currentPage + 1} of {totalPages}</span>
+          {loading && <div>Loading...</div>}
+          {error && <div>{error}</div>}
 
-          <button onClick={handleNextPage} disabled={currentPage === totalPages - 1}>
-            Next
-          </button>
-        </div>
-      </main>
+          {!loading && !error && (
+            <div className="food-grid">
+              {foods.length === 0 ? (
+                <p>No foods found</p>
+              ) : (
+                foods.map((food) => (
+                  <ProductItem key={food.id} food={food} onAddFood={handleAddFood} />
+                ))
+              )}
+            </div>
+          )}
+
+          {/* Pagination */}
+          <div className="pagination">
+            <button onClick={handlePrevPage} disabled={currentPage === 0}>
+              Previous
+            </button>
+
+            <span>Page {currentPage + 1} of {totalPages}</span>
+
+            <button onClick={handleNextPage} disabled={currentPage === totalPages - 1}>
+              Next
+            </button>
+          </div>
+        </main>
+      </div>
+      <div className="right-side">
+        <NutritionBars consumedFoods={consumedFoods}/>
+      </div>
     </div>
   );
 }

@@ -76,7 +76,7 @@ button {
   margin-inline-start: 6px;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: rgb(5, 201, 5);
 }
 button:focus,
 button:focus-visible {
@@ -97,11 +97,12 @@ button:focus-visible {
 }
 
 .product-container{
-  color: rgb(211, 211, 211);
+  height: auto;
 }
 
 .product-nutrition{
   color: lightgreen;
+  margin-top: 20px;
 }
 
 .main-page-header{
@@ -128,13 +129,6 @@ button:focus-visible {
   border: 1px solid rgb(5, 201, 5);
 }
 
-.main-page-container{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; 
-  width: 50%; 
-  padding: 1rem;
-}
 
 .search-bar-container{
   display: flex;
@@ -154,4 +148,126 @@ button:focus-visible {
 
 .clear-button.visible {
   visibility: visible;
+}
+
+.servings-input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid white;  
+  color: whitesmoke;
+  width: 45px;
+  padding: 0.2em 0;
+  font-size: 1em;
+  outline: none;
+  text-align: center;  
+  margin-bottom: 10px;
+}
+
+.servings-input:focus {
+  border-bottom: 2px solid rgb(5, 201, 5); 
+}
+
+
+.servings-input::-webkit-inner-spin-button,
+.servings-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.macro-bar-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.macro-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.macro-label {
+  font-weight: 500;
+  color: whitesmoke;
+}
+
+.macro-bar-wrapper {
+  width: 100%; 
+  height: 6px;
+  background-color: #1a1a1a; 
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.macro-bar {
+  height: 100%;
+  border-radius: 10px;
+  transition: all 0.3s ease; 
+  min-width: 2%;
+}
+
+.macro-amount {
+  font-weight: 600;
+  color: whitesmoke;
+}
+.nutrition-bars {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.nutrition-bars h2 {
+  color: rgb(5, 201, 5);
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+
+.calories-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  margin-bottom: 1.5rem;
+}
+
+.calories-label {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: whitesmoke;
+}
+
+.calories-amount {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: rgb(5, 201, 5);
+  margin-left: 3rem;
+}
+
+.macro-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.main-page-wrapper {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.left-side {
+  flex:0 0 35%;
+}
+
+.right-side {
+  flex: 0 0 45%;
+  position: fixed;
+  top: 7rem;
+  right: 5rem;
+  height: fit-content;  
 }
