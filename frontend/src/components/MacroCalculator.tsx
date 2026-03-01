@@ -12,10 +12,10 @@ interface MacroCalculatorProps {
 const MacroCalculator = ({ weight, height, age, onWeightChange, onHeightChange, onAgeChange }: MacroCalculatorProps) => {
   return (
     <div className="macro-calculator-container">
-      <h3>ENTER VALUES</h3>
+      <h3></h3>
       <div className="macro-calculator">
         <span>Weight
-          <input type="number" min="1" value={weight} onChange={onWeightChange} className="input-stats" />
+          <input type="number" min="1" value={weight} onChange={onWeightChange} className="input-stats"/>
         </span>
         <span>Height
           <input type="number" min="1" value={height} onChange={onHeightChange} className="input-stats" />

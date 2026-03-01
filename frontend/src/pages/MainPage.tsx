@@ -81,7 +81,7 @@ function MainPage(){
 
     const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => 
       setHeight(e.target.value);
-    
+
     const handleAgeChange    = (e: React.ChangeEvent<HTMLInputElement>) => 
       setAge(e.target.value);
 
@@ -129,6 +129,7 @@ function MainPage(){
       </div>
       <div className="right-side">
         <NutritionBars consumedFoods={consumedFoods} weight={weight} age={age} height={height}/>
+        <div className="below-bars">
         <MacroCalculator
             weight={weight}
             height={height}
@@ -136,6 +137,7 @@ function MainPage(){
             onWeightChange={handleWeightChange}
             onHeightChange={handleHeightChange}
             onAgeChange={handleAgeChange}/>
+        </div>
       </div>
     </div>
   );
