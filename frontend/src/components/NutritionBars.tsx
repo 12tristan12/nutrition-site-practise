@@ -1,17 +1,21 @@
 import MacroBar from "./MacroBars";
 import type {Product} from "../types/Food";
 import { calculateGoals } from "../components/MacroCalculator";
+import ActivityCalculator from "../components/ActivityCalculator.tsx"
+
 
 interface NutritionBarsProps {
     consumedFoods: {food: Product; servings: number}[];
     weight: string;
     height: string;
     age: string;
+    activitylevel: string;
+    intakelevel: string;
 
 
 }
 
-const NutritionBars = ({consumedFoods, weight, height, age}: NutritionBarsProps) => {
+const NutritionBars = ({consumedFoods, weight, height, age, activitylevel, intakelevel}: NutritionBarsProps) => {
 
     const totalCalories = consumedFoods.reduce((sum, item) => 
     sum + (item.food.caloriesPer100g * item.servings), 0
@@ -32,7 +36,7 @@ const NutritionBars = ({consumedFoods, weight, height, age}: NutritionBarsProps)
     const totalSugar = consumedFoods.reduce((sum, item) => 
         sum + (item.food.sugarPer100g * item.servings), 0
     );
-    const goals = calculateGoals(weight, height, age);
+    const goals = calculateGoals(weight, height, age, activitylevel, intakelevel);
     const pct = (amount: number, goal: number) => Math.min((amount / goal) * 100, 100);
 
     return(

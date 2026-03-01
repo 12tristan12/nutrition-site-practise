@@ -1,4 +1,3 @@
-
 interface MacroBarProps{
     label: string;
     amount: number;

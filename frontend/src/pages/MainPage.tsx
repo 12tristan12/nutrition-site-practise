@@ -5,7 +5,7 @@ import type { Product } from "../types/Food";
 import  ProductItem from "../components/ProductItem";
 import NutritionBars from "../components/NutritionBars";
 import MacroCalculator from "../components/MacroCalculator";
-
+import ActivityCalculator from "../components/ActivityCalculator.tsx"
 
 
 function MainPage(){
@@ -21,6 +21,8 @@ function MainPage(){
     const [weight, setWeight] = useState<string>("70");
     const [height, setHeight] = useState<string>("165");
     const [age, setAge] = useState<string>("35");
+    const [activitylevel, setActivityLevel] = useState<string>("moderate");
+    const [intakelevel, setIntakeLevel] = useState<string>("maintain");
 
     useEffect (() => {
         const fetchData = async () =>{ 
@@ -85,6 +87,13 @@ function MainPage(){
     const handleAgeChange    = (e: React.ChangeEvent<HTMLInputElement>) => 
       setAge(e.target.value);
 
+    const handleActivityChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+      setActivityLevel(e.target.value);
+
+
+    const handleIntakeChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+      setIntakeLevel(e.target.value);
+
     return (
     <div className="main-page-wrapper">
       <div className="left-side">
@@ -128,7 +137,7 @@ function MainPage(){
         </main>
       </div>
       <div className="right-side">
-        <NutritionBars consumedFoods={consumedFoods} weight={weight} age={age} height={height}/>
+        <NutritionBars consumedFoods={consumedFoods} weight={weight} age={age} height={height} activitylevel={activitylevel} intakelevel={intakelevel}/>
         <div className="below-bars">
         <MacroCalculator
             weight={weight}
@@ -137,6 +146,11 @@ function MainPage(){
             onWeightChange={handleWeightChange}
             onHeightChange={handleHeightChange}
             onAgeChange={handleAgeChange}/>
+        <ActivityCalculator
+            activitylevel={activitylevel}
+            intakelevel={intakelevel}
+            onActivityChange={handleActivityChange}
+            onIntakeChange={handleIntakeChange}/>
         </div>
       </div>
     </div>
