@@ -4,6 +4,8 @@ import { SearchBar }  from "../components/SearchBar";
 import type { Product } from "../types/Food";
 import  ProductItem from "../components/ProductItem";
 import NutritionBars from "../components/NutritionBars";
+import MacroCalculator from "../components/MacroCalculator";
+
 
 
 function MainPage(){
@@ -16,6 +18,9 @@ function MainPage(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [consumedFoods, setConsumedFoods] = useState<{food: Product, servings: number}[]>([]);
+    const [weight, setWeight] = useState<string>("70");
+    const [height, setHeight] = useState<string>("165");
+    const [age, setAge] = useState<string>("35");
 
     useEffect (() => {
         const fetchData = async () =>{ 
@@ -70,6 +75,16 @@ function MainPage(){
       setConsumedFoods(prev =>  [...prev, { food, servings}]);
     }
 
+    const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => 
+      setWeight(e.target.value);
+
+
+    const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => 
+      setHeight(e.target.value);
+    
+    const handleAgeChange    = (e: React.ChangeEvent<HTMLInputElement>) => 
+      setAge(e.target.value);
+
     return (
     <div className="main-page-wrapper">
       <div className="left-side">
@@ -113,7 +128,14 @@ function MainPage(){
         </main>
       </div>
       <div className="right-side">
-        <NutritionBars consumedFoods={consumedFoods}/>
+        <NutritionBars consumedFoods={consumedFoods} weight={weight} age={age} height={height}/>
+        <MacroCalculator
+            weight={weight}
+            height={height}
+            age={age}
+            onWeightChange={handleWeightChange}
+            onHeightChange={handleHeightChange}
+            onAgeChange={handleAgeChange}/>
       </div>
     </div>
   );

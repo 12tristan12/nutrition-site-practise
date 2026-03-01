@@ -1,16 +1,18 @@
-import consumedFoods from "../pages/MainPage";
 
 interface MacroBarProps{
     label: string;
     amount: number;
     color: string;
+    width: number;
 }
 
-const MacroBar = ({ label, amount, color }: MacroBarProps) => {
+const MacroBar = ({ label, amount, color, width }: MacroBarProps) => {
   const isActive = amount > 0;
 
+  
+
   return (
-    <div className="macro-bar-container">
+    <div className="macro-bar-contariner">
       <div className="macro-info">
         <span className="macro-label">{label}</span>
         <span className="macro-amount">{amount.toFixed(1)}g</span>
@@ -21,7 +23,7 @@ const MacroBar = ({ label, amount, color }: MacroBarProps) => {
           className="macro-bar"
           style={{
             backgroundColor: isActive ? color : '#333',
-            width: '100%'
+            width: `${width}%`
           }}
         />
       </div>

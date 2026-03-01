@@ -7,20 +7,19 @@ interface Props {
 }
 
 const ProductItem = ({food, onAddFood}: Props ) => {
-    const [servings, setServings] = useState<number>(1);
+    const [servings, setServings] = useState<string>("1");
 
     const handleServingsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
-        const value = Number(e.target.value);
-        if (value > 0) {
-            setServings(value);
-        }
+        setServings(e.target.value)
     }
 
 
     const handleAddFood = () => {
-        onAddFood(food, servings);
-        setServings(1);
+        const numericServings = Number(servings);
+        if (numericServings > 0) {
+            onAddFood(food, numericServings); 
+        }
     }
 
     return (
@@ -44,7 +43,7 @@ const ProductItem = ({food, onAddFood}: Props ) => {
                 onChange={handleServingsChange}
                 className="servings-input" />
             <span>  x 100g</span>
-            <button onClick={handleAddFood}>Add to tracker</button>
+            <button onClick={handleAddFood} disabled={Number(servings) <= 0}>Add to tracker</button>
         </div>
         </div>
     );
