@@ -6,7 +6,13 @@ import  ProductItem from "../components/ProductItem";
 import NutritionBars from "../components/NutritionBars";
 import MacroCalculator from "../components/MacroCalculator";
 import ActivityCalculator from "../components/ActivityCalculator.tsx"
+import { addLogEntry, deleteLogEntry, getProfile, getTodayLog, saveProfile } from "../api/profileService.ts";
 
+interface ConsumedFood {
+  logId: number;
+  food: Product;
+  servings: number;
+}
 
 function MainPage(){
 
@@ -17,12 +23,53 @@ function MainPage(){
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [consumedFoods, setConsumedFoods] = useState<{food: Product, servings: number}[]>([]);
+    const [consumedFoods, setConsumedFoods] = useState<ConsumedFood[]>([]);
     const [weight, setWeight] = useState<string>("70");
     const [height, setHeight] = useState<string>("165");
     const [age, setAge] = useState<string>("35");
-    const [activitylevel, setActivityLevel] = useState<string>("moderate");
-    const [intakelevel, setIntakeLevel] = useState<string>("maintain");
+    const [activityLevel, setActivityLevel] = useState<string>("moderate");
+    const [intakeLevel, setIntakeLevel] = useState<string>("maintain");
+
+
+    useEffect (() => {
+      getProfile().then((p) => {
+        setWeight(String(p.weight));
+        setHeight(String(p.height));
+        setAge(String(p.age))
+        setActivityLevel(p.activityLevel);
+        setIntakeLevel(p.intakeLevel);
+    })
+    .catch(console.error);
+    }, []);
+
+    useEffect (() => {
+      const w = Number(weight);
+      const a = Number(age);
+      const h = Number(height);
+
+      if (!w || !h || !a) return;
+
+      const timer = setTimeout(() => {
+        saveProfile({weight: w, height: h, age: a, activityLevel, intakeLevel}).catch(console.error);
+      }, 600);
+
+      return () => clearTimeout(timer);
+    }, [weight, height, age, activityLevel, intakeLevel]);
+
+    useEffect(() => {
+      getTodayLog()
+        .then(async (entries) => {
+          const consumed = await Promise.all(
+            entries.map(async (e) => {
+              const res = await fetch(`http://localhost:8080/api/foods/${e.foodId}`);
+              const food: Product = await res.json();
+              return { logId: e.id, food, servings: e.servings };
+            })
+          );
+          setConsumedFoods(consumed);
+        })
+        .catch(console.error);
+    }, []);
 
     useEffect (() => {
         const fetchData = async () =>{ 
@@ -73,10 +120,27 @@ function MainPage(){
         }
     };
 
-    const handleAddFood = (food: Product, servings: number) => {
-      setConsumedFoods(prev =>  [...prev, { food, servings}]);
-    }
+    const handleAddFood = async (food: Product, servings: number) => {
+      try {
+        const entry = await addLogEntry(food.id, servings);
+        setConsumedFoods((prev) => [...prev, { logId: entry.id, food, servings }]);
+      } catch {
+        console.error("Failed to save food log entry");
+      }
+    };
+  
 
+    const handleRemoveFood = async (logId: number) => {
+      try {
+        await deleteLogEntry(logId);
+        setConsumedFoods((prev) => prev.filter((f) => f.logId !== logId));
+      } catch {
+        console.error("Failed to delete food log entry");
+      }
+      
+    };
+    
+    
     const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => 
       setWeight(e.target.value);
 
@@ -137,7 +201,7 @@ function MainPage(){
         </main>
       </div>
       <div className="right-side">
-        <NutritionBars consumedFoods={consumedFoods} weight={weight} age={age} height={height} activitylevel={activitylevel} intakelevel={intakelevel}/>
+        <NutritionBars consumedFoods={consumedFoods} weight={weight} age={age} height={height} activitylevel={activityLevel} intakelevel={intakeLevel} onRemoveFood={handleRemoveFood}/>
         <div className="below-bars">
         <MacroCalculator
             weight={weight}
@@ -147,8 +211,8 @@ function MainPage(){
             onHeightChange={handleHeightChange}
             onAgeChange={handleAgeChange}/>
         <ActivityCalculator
-            activitylevel={activitylevel}
-            intakelevel={intakelevel}
+            activitylevel={activityLevel}
+            intakelevel={intakeLevel}
             onActivityChange={handleActivityChange}
             onIntakeChange={handleIntakeChange}/>
         </div>

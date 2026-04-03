@@ -1,21 +1,20 @@
 import MacroBar from "./MacroBars";
 import type {Product} from "../types/Food";
 import { calculateGoals } from "../components/MacroCalculator";
-import ActivityCalculator from "../components/ActivityCalculator.tsx"
 
 
 interface NutritionBarsProps {
-    consumedFoods: {food: Product; servings: number}[];
+    consumedFoods: { logId: number; food: Product; servings: number }[];
     weight: string;
     height: string;
     age: string;
     activitylevel: string;
     intakelevel: string;
-
+    onRemoveFood: (logId: number) => void;
 
 }
 
-const NutritionBars = ({consumedFoods, weight, height, age, activitylevel, intakelevel}: NutritionBarsProps) => {
+const NutritionBars = ({consumedFoods, weight, height, age, activitylevel, intakelevel, onRemoveFood}: NutritionBarsProps) => {
 
     const totalCalories = consumedFoods.reduce((sum, item) => 
     sum + (item.food.caloriesPer100g * item.servings), 0
@@ -52,6 +51,16 @@ const NutritionBars = ({consumedFoods, weight, height, age, activitylevel, intak
             <MacroBar label="Fat" amount={totalFat} color="#ffe867" width={pct(totalFat, goals.fat)} />
             <MacroBar label="Carbs" amount={totalCarbs} color="#71ff7f" width={pct(totalCarbs, goals.carbs)}/>
             <MacroBar label="Sugar" amount={totalSugar} color="#6adcff" width={pct(totalSugar,50)} />
+        </div>
+        <div className="consumed-list">
+            {consumedFoods.map((item) => (
+                <div key={item.logId} className="consumed-item">
+                    <span className="consumed-name">{item.food.name}</span>
+                    <span className="consumed-servings">{item.servings} x 100g</span>
+                    <button className="remove-button" onClick={() => onRemoveFood(item.logId)}>X</button>
+                </div>
+            ))}
+            
         </div>
     </div>
     );

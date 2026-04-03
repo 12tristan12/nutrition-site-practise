@@ -306,3 +306,37 @@ option {
   background-color: #1a1a1a;
   color: whitesmoke;
 }
+
+.consumed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.consumed-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: whitesmoke;
+}
+
+.consumed-name {
+  flex: 1;
+}
+
+.consumed-servings {
+  margin-right: 1rem;
+  color: gray;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #e64b4b;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 0;
+  margin: 0;
+}
