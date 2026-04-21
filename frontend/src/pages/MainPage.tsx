@@ -6,13 +6,17 @@ import  ProductItem from "../components/ProductItem";
 import NutritionBars from "../components/NutritionBars";
 import MacroCalculator from "../components/MacroCalculator";
 import ActivityCalculator from "../components/ActivityCalculator.tsx"
-import { addLogEntry, deleteLogEntry, getProfile, getTodayLog, saveProfile } from "../api/profileService.ts";
+import { addLogEntry, deleteLogEntry, getProfile, getLogByDate, saveProfile } from "../api/profileService.ts";
+import WeekCalendar from "../components/WeekCalendar";
 
 interface ConsumedFood {
   logId: number;
   food: Product;
   servings: number;
 }
+
+const toDateString = (date: Date): string =>
+  `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;
 
 function MainPage(){
 
@@ -29,6 +33,7 @@ function MainPage(){
     const [age, setAge] = useState<string>("35");
     const [activityLevel, setActivityLevel] = useState<string>("moderate");
     const [intakeLevel, setIntakeLevel] = useState<string>("maintain");
+    const [selectedDate, setSelectedDate] = useState<string>(toDateString(new Date()));
 
 
     useEffect (() => {
@@ -57,7 +62,8 @@ function MainPage(){
     }, [weight, height, age, activityLevel, intakeLevel]);
 
     useEffect(() => {
-      getTodayLog()
+      console.log("fetching log for:", selectedDate);
+      getLogByDate(selectedDate)
         .then(async (entries) => {
           const consumed = await Promise.all(
             entries.map(async (e) => {
@@ -69,7 +75,7 @@ function MainPage(){
           setConsumedFoods(consumed);
         })
         .catch(console.error);
-    }, []);
+    }, [selectedDate]);
 
     useEffect (() => {
         const fetchData = async () =>{ 
@@ -215,7 +221,9 @@ function MainPage(){
             intakelevel={intakeLevel}
             onActivityChange={handleActivityChange}
             onIntakeChange={handleIntakeChange}/>
+        
         </div>
+        <WeekCalendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
       </div>
     </div>
   );

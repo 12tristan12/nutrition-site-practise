@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.items.FoodLog;
@@ -28,8 +29,9 @@ public class FoodLogController {
     }
 
     @GetMapping
-    public List<FoodLog> getToday() {
-        return repo.findByUserIdAndDate(DEFAULT_USER_ID, LocalDate.now());
+    public List<FoodLog> getByDate(@RequestParam(required = false) String date) {
+        LocalDate localDate = (date != null) ? LocalDate.parse(date) : LocalDate.now();
+        return repo.findByUserIdAndDate(DEFAULT_USER_ID, localDate);
     }
 
     @PostMapping

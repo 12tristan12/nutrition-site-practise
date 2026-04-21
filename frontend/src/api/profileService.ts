@@ -31,8 +31,8 @@ export interface FoodLogEntry {
   servings: number;
 }
 
-export const getTodayLog = async (): Promise<FoodLogEntry[]> => {
-  const res = await fetch(`${BASE_URL}/foodlog`);
+export const getLogByDate = async (date: String): Promise<FoodLogEntry[]> => {
+  const res = await fetch(`${BASE_URL}/foodlog?date=${date}`);
   if (!res.ok) throw new Error("Failed to load food log");
   return res.json();
 };
