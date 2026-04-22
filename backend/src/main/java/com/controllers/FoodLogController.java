@@ -20,7 +20,6 @@ import com.repositories.FoodLogRepository;
 @RequestMapping("/api/foodlog")
 public class FoodLogController {
 
-    private static final Long DEFAULT_USER_ID = 1L;
 
     private final FoodLogRepository repo;
 
@@ -29,18 +28,19 @@ public class FoodLogController {
     }
 
     @GetMapping
-    public List<FoodLog> getByDate(@RequestParam(required = false) String date) {
+    public List<FoodLog> getByDate(
+            @RequestParam Long userId,
+            @RequestParam(required = false) String date) {
         LocalDate localDate = (date != null) ? LocalDate.parse(date) : LocalDate.now();
-        return repo.findByUserIdAndDate(DEFAULT_USER_ID, localDate);
+        return repo.findByUserIdAndDate(userId, localDate);
     }
-
+ 
     @PostMapping
     public ResponseEntity<FoodLog> addEntry(@RequestBody FoodLog entry) {
-        entry.setUserId(DEFAULT_USER_ID);
         entry.setDate(LocalDate.now());
         return ResponseEntity.ok(repo.save(entry));
     }
-
+ 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEntry(@PathVariable Long id) {
         repo.deleteById(id);

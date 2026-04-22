@@ -8,6 +8,8 @@ import MacroCalculator from "../components/MacroCalculator";
 import ActivityCalculator from "../components/ActivityCalculator.tsx"
 import { addLogEntry, deleteLogEntry, getProfile, getLogByDate, saveProfile } from "../api/profileService.ts";
 import WeekCalendar from "../components/WeekCalendar";
+import type { UserProfile } from "../api/profileService";
+import LoginPopup from "../components/LoginPopup";
 
 interface ConsumedFood {
   logId: number;
@@ -34,152 +36,134 @@ function MainPage(){
     const [activityLevel, setActivityLevel] = useState<string>("moderate");
     const [intakeLevel, setIntakeLevel] = useState<string>("maintain");
     const [selectedDate, setSelectedDate] = useState<string>(toDateString(new Date()));
+    const [user, setUser] = useState<UserProfile | null>(null);
 
-
-    useEffect (() => {
-      getProfile().then((p) => {
-        setWeight(String(p.weight));
-        setHeight(String(p.height));
-        setAge(String(p.age))
-        setActivityLevel(p.activityLevel);
-        setIntakeLevel(p.intakeLevel);
-    })
-    .catch(console.error);
-    }, []);
-
-    useEffect (() => {
-      const w = Number(weight);
-      const a = Number(age);
-      const h = Number(height);
-
-      if (!w || !h || !a) return;
-
-      const timer = setTimeout(() => {
-        saveProfile({weight: w, height: h, age: a, activityLevel, intakeLevel}).catch(console.error);
-      }, 600);
-
-      return () => clearTimeout(timer);
-    }, [weight, height, age, activityLevel, intakeLevel]);
 
     useEffect(() => {
-      console.log("fetching log for:", selectedDate);
-      getLogByDate(selectedDate)
-        .then(async (entries) => {
-          const consumed = await Promise.all(
-            entries.map(async (e) => {
-              const res = await fetch(`http://localhost:8080/api/foods/${e.foodId}`);
-              const food: Product = await res.json();
-              return { logId: e.id, food, servings: e.servings };
-            })
-          );
-          setConsumedFoods(consumed);
+    const savedId = localStorage.getItem("userId");
+    if (savedId) {
+      getProfile(Number(savedId))
+        .then((p) => {
+          setUser(p);
+          applyProfile(p);
         })
+        .catch(() => localStorage.removeItem("userId")); // stale id — show login again
+    }
+  }, []);
+ 
+  const applyProfile = (p: UserProfile) => {
+    setWeight(String(p.weight));
+    setHeight(String(p.height));
+    setAge(String(p.age));
+    setActivityLevel(p.activityLevel);
+    setIntakeLevel(p.intakeLevel);
+  };
+ 
+  const handleLogin = (profile: UserProfile) => {
+    setUser(profile);
+    applyProfile(profile);
+  };
+ 
+
+  useEffect(() => {
+    if (!user) return;
+    const w = Number(weight);
+    const h = Number(height);
+    const a = Number(age);
+    if (!w || !h || !a) return;
+ 
+    const timer = setTimeout(() => {
+      saveProfile(user.id, { weight: w, height: h, age: a, activityLevel, intakeLevel })
         .catch(console.error);
-    }, [selectedDate]);
+    }, 600);
+ 
+    return () => clearTimeout(timer);
+  }, [weight, height, age, activityLevel, intakeLevel]);
+ 
+ 
+  useEffect(() => {
+    if (!user) return;
+    getLogByDate(user.id, selectedDate)
+      .then(async (entries) => {
+        const consumed = await Promise.all(
+          entries.map(async (e) => {
+            const res = await fetch(`http://localhost:8080/api/foods/${e.foodId}`);
+            const food: Product = await res.json();
+            return { logId: e.id, food, servings: e.servings };
+          })
+        );
+        setConsumedFoods(consumed);
+      })
+      .catch(console.error);
+  }, [selectedDate, user]);
+ 
 
-    useEffect (() => {
-        const fetchData = async () =>{ 
-            try {
-                setLoading(true);
-
-                let response;
-
-                if (searchQuery.trim() === ""){
-                    response = await getAllFoods(currentPage, 20);
-                }
-                else {
-                    response = await searchFoods(searchQuery, currentPage, 20);
-                }
-                
-                setFoods(response.content);
-                setTotalPages(response.totalPages);
-                setTotalElements(response.totalElements);
-                setError(null);
-
-            }
-            catch(err) {
-                setError("FAiled loading foods");
-            }
-            finally{
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    },
-    [currentPage, searchQuery]);
-
-    const handleSearch = (query: string) => {
-      setSearchQuery(query);
-      setCurrentPage(0); 
-    };
-
-    const handleNextPage = () =>{
-        if (currentPage < totalPages -1){
-            setCurrentPage(currentPage + 1);
-        }
-    };
-
-    const handlePrevPage = () => {
-        if (currentPage > 0){
-            setCurrentPage(currentPage - 1);
-        }
-    };
-
-    const handleAddFood = async (food: Product, servings: number) => {
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const entry = await addLogEntry(food.id, servings);
-        setConsumedFoods((prev) => [...prev, { logId: entry.id, food, servings }]);
+        setLoading(true);
+        const response =
+          searchQuery.trim() === ""
+            ? await getAllFoods(currentPage, 20)
+            : await searchFoods(searchQuery, currentPage, 20);
+        setFoods(response.content);
+        setTotalPages(response.totalPages);
+        setTotalElements(response.totalElements);
+        setError(null);
       } catch {
-        console.error("Failed to save food log entry");
+        setError("Failed loading foods");
+      } finally {
+        setLoading(false);
       }
     };
-  
-
-    const handleRemoveFood = async (logId: number) => {
-      try {
-        await deleteLogEntry(logId);
-        setConsumedFoods((prev) => prev.filter((f) => f.logId !== logId));
-      } catch {
-        console.error("Failed to delete food log entry");
-      }
-      
-    };
-    
-    
-    const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => 
-      setWeight(e.target.value);
-
-
-    const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => 
-      setHeight(e.target.value);
-
-    const handleAgeChange    = (e: React.ChangeEvent<HTMLInputElement>) => 
-      setAge(e.target.value);
-
-    const handleActivityChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-      setActivityLevel(e.target.value);
-
-
-    const handleIntakeChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-      setIntakeLevel(e.target.value);
-
-    return (
+    fetchData();
+  }, [currentPage, searchQuery]);
+ 
+  const handleSearch = (query: string) => { setSearchQuery(query); setCurrentPage(0); };
+  const handleNextPage = () => { if (currentPage < totalPages - 1) setCurrentPage(currentPage + 1); };
+  const handlePrevPage = () => { if (currentPage > 0) setCurrentPage(currentPage - 1); };
+ 
+  const handleAddFood = async (food: Product, servings: number) => {
+    if (!user) return;
+    try {
+      const entry = await addLogEntry(user.id, food.id, servings);
+      setConsumedFoods((prev) => [...prev, { logId: entry.id, food, servings }]);
+    } catch {
+      console.error("Failed to save food log entry");
+    }
+  };
+ 
+  const handleRemoveFood = async (logId: number) => {
+    try {
+      await deleteLogEntry(logId);
+      setConsumedFoods((prev) => prev.filter((f) => f.logId !== logId));
+    } catch {
+      console.error("Failed to delete food log entry");
+    }
+  };
+ 
+  const handleWeightChange   = (e: React.ChangeEvent<HTMLInputElement>)  => setWeight(e.target.value);
+  const handleHeightChange   = (e: React.ChangeEvent<HTMLInputElement>)  => setHeight(e.target.value);
+  const handleAgeChange      = (e: React.ChangeEvent<HTMLInputElement>)  => setAge(e.target.value);
+  const handleActivityChange = (e: React.ChangeEvent<HTMLSelectElement>) => setActivityLevel(e.target.value);
+  const handleIntakeChange   = (e: React.ChangeEvent<HTMLSelectElement>) => setIntakeLevel(e.target.value);
+ 
+  return (
     <div className="main-page-wrapper">
+      {!user && <LoginPopup onLogin={handleLogin} />}
+ 
       <div className="left-side">
         <header>
-          <div className = "main-page-header">
+          <div className="main-page-header">
             <h1>Nutrition Tracker</h1>
           </div>
-            <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={handleSearch} />
         </header>
-
+ 
         <main>
           <p>Showing {foods.length} of {totalElements} foods</p>
-
           {loading && <div>Loading...</div>}
           {error && <div>{error}</div>}
-
           {!loading && !error && (
             <div className="food-grid">
               {foods.length === 0 ? (
@@ -191,41 +175,46 @@ function MainPage(){
               )}
             </div>
           )}
-
-          {/* Pagination */}
           <div className="pagination">
-            <button onClick={handlePrevPage} disabled={currentPage === 0}>
-              Previous
-            </button>
-
+            <button onClick={handlePrevPage} disabled={currentPage === 0}>Previous</button>
             <span>Page {currentPage + 1} of {totalPages}</span>
-
-            <button onClick={handleNextPage} disabled={currentPage === totalPages - 1}>
-              Next
-            </button>
+            <button onClick={handleNextPage} disabled={currentPage === totalPages - 1}>Next</button>
           </div>
         </main>
+ 
+      
       </div>
+ 
       <div className="right-side">
-        <NutritionBars consumedFoods={consumedFoods} weight={weight} age={age} height={height} activitylevel={activityLevel} intakelevel={intakeLevel} onRemoveFood={handleRemoveFood}/>
+        <NutritionBars
+          consumedFoods={consumedFoods}
+          weight={weight}
+          age={age}
+          height={height}
+          activitylevel={activityLevel}
+          intakelevel={intakeLevel}
+          onRemoveFood={handleRemoveFood}
+        />
         <div className="below-bars">
-        <MacroCalculator
+          <MacroCalculator
             weight={weight}
             height={height}
             age={age}
             onWeightChange={handleWeightChange}
             onHeightChange={handleHeightChange}
-            onAgeChange={handleAgeChange}/>
-        <ActivityCalculator
+            onAgeChange={handleAgeChange}
+          />
+          <ActivityCalculator
             activitylevel={activityLevel}
             intakelevel={intakeLevel}
             onActivityChange={handleActivityChange}
-            onIntakeChange={handleIntakeChange}/>
-        
+            onIntakeChange={handleIntakeChange}
+          />
         </div>
         <WeekCalendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
       </div>
     </div>
   );
 }
+ 
 export default MainPage;

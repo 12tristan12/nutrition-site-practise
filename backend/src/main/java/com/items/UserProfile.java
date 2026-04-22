@@ -1,5 +1,8 @@
 package com.items;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -8,7 +11,11 @@ import jakarta.persistence.Table;
 public class UserProfile{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
 
     private double weight;
     private double height;
@@ -19,18 +26,27 @@ public class UserProfile{
     public UserProfile (){}
 
 
-    public UserProfile(Long id, double weight, double height, int age, String activityLevel, String intakeLevel) {
+    public UserProfile(String username) {
         
-        this.id = id;
-        this.weight = weight;
-        this.height = height;
-        this.age = age;
-        this.activityLevel = activityLevel;
-        this.intakeLevel = intakeLevel;
+        this.username = username;
+        this.weight = 70;
+        this.height = 165;
+        this.age = 25;
+        this.activityLevel = "moderate";
+        this.intakeLevel = "maintain";
     }
 
     public Long getId(){
         return id;
+    }
+
+    public String getUsername(){ 
+        return username; 
+    }
+
+
+    public void setUsername(String username){
+         this.username = username; 
     }
 
     public void setId(Long id){
